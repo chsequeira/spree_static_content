@@ -17,6 +17,7 @@
     <thead>
       <tr data-hook="admin_pages_index_headers">
         <th><%= Spree::Page.human_attribute_name(:title) %></th>
+        <th><%= Spree.t(:page_group) %></th>
         <th><%= Spree.t(:link, scope: :static_content) %></th>
         <th class="text-center"><%= Spree::Page.human_attribute_name(:visible) %></th>
         <th data-hook="admin_pages_index_header_actions" class="actions"></th>
@@ -26,6 +27,7 @@
       <% @pages.each do |page| %>
         <tr data-hook="admin_pages_index_rows" class="<%= cycle('odd', 'even') %>" id="<%= dom_id page %>">
           <td><%= page.title %></td>
+          <td><%= page.page_group %></td>
           <td><%= link_to page.link, page.link, target: '_blank' %></td>
           <td class="text-center"><%= content_tag(:i, '', class: 'icon icon-ok') if page.visible %></td>
           <td class="actions text-right" data-hook="admin_pages_index_row_actions">
